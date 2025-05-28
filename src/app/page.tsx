@@ -1,4 +1,5 @@
 import { Sparkles, Star, Clock, Globe, Heart, Users, BookOpen, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -6,16 +7,16 @@ export default function Home() {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <Sparkles className="w-8 h-8 text-purple-600" />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               VeloraBook
             </h1>
-          </div>
+          </Link>
           <nav className="hidden md:flex space-x-6">
-            <a href="#" className="text-gray-600 hover:text-purple-600">Как работает</a>
-            <a href="#" className="text-gray-600 hover:text-purple-600">Примеры</a>
-            <a href="#" className="text-gray-600 hover:text-purple-600">Цены</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-purple-600">Как работает</a>
+            <a href="#book-types" className="text-gray-600 hover:text-purple-600">Примеры</a>
+            <a href="#pricing" className="text-gray-600 hover:text-purple-600">Цены</a>
             <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
               Войти
             </button>
@@ -51,87 +52,95 @@ export default function Home() {
             </div>
           </div>
 
-          <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all shadow-lg">
-            Создать мою книгу
-            <ArrowRight className="w-5 h-5 ml-2 inline" />
-          </button>
+          <Link href="/create">
+            <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all shadow-lg">
+              Создать мою книгу
+              <ArrowRight className="w-5 h-5 ml-2 inline" />
+            </button>
+          </Link>
         </div>
       </section>
 
       {/* Book Types */}
-      <section className="container mx-auto px-4 py-16">
+      <section id="book-types" className="container mx-auto px-4 py-16">
         <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
           Выберите тип вашей книги
         </h3>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Romantic Book */}
-          <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-            <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Heart className="w-8 h-8 text-white" />
+          <Link href="/create?type=romantic">
+            <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-semibold text-gray-800 mb-3">Романтическая книга</h4>
+              <p className="text-gray-600 mb-4">Для второй половинки</p>
+              <ul className="text-sm text-gray-500 space-y-1 mb-6">
+                <li>• AI-генерация романтического текста</li>
+                <li>• Красивый дизайн</li>
+                <li>• Фотоколлажи ваших моментов</li>
+              </ul>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 flex items-center">
+                  <Clock className="w-4 h-4 mr-1" />
+                  15 мин
+                </span>
+                <span className="text-lg font-bold text-purple-600">2,990₽</span>
+              </div>
             </div>
-            <h4 className="text-xl font-semibold text-gray-800 mb-3">Романтическая книга</h4>
-            <p className="text-gray-600 mb-4">Для второй половинки</p>
-            <ul className="text-sm text-gray-500 space-y-1 mb-6">
-              <li>• AI-генерация романтического текста</li>
-              <li>• Красивый дизайн</li>
-              <li>• Фотоколлажи ваших моментов</li>
-            </ul>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 flex items-center">
-                <Clock className="w-4 h-4 mr-1" />
-                15 мин
-              </span>
-              <span className="text-lg font-bold text-purple-600">$29.99</span>
-            </div>
-          </div>
+          </Link>
 
           {/* Family Book */}
-          <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Users className="w-8 h-8 text-white" />
+          <Link href="/create?type=family">
+            <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-semibold text-gray-800 mb-3">Семейная история</h4>
+              <p className="text-gray-600 mb-4">Для родителей или детей</p>
+              <ul className="text-sm text-gray-500 space-y-1 mb-6">
+                <li>• Семейное древо</li>
+                <li>• Временная шкала событий</li>
+                <li>• Архив семейных фото</li>
+              </ul>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 flex items-center">
+                  <Clock className="w-4 h-4 mr-1" />
+                  20 мин
+                </span>
+                <span className="text-lg font-bold text-purple-600">3,990₽</span>
+              </div>
             </div>
-            <h4 className="text-xl font-semibold text-gray-800 mb-3">Семейная история</h4>
-            <p className="text-gray-600 mb-4">Для родителей или детей</p>
-            <ul className="text-sm text-gray-500 space-y-1 mb-6">
-              <li>• Семейное древо</li>
-              <li>• Временная шкала событий</li>
-              <li>• Архив семейных фото</li>
-            </ul>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 flex items-center">
-                <Clock className="w-4 h-4 mr-1" />
-                20 мин
-              </span>
-              <span className="text-lg font-bold text-purple-600">$34.99</span>
-            </div>
-          </div>
+          </Link>
 
           {/* Friendship Book */}
-          <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <BookOpen className="w-8 h-8 text-white" />
+          <Link href="/create?type=friendship">
+            <div className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <BookOpen className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-semibold text-gray-800 mb-3">Книга дружбы</h4>
+              <p className="text-gray-600 mb-4">Для лучшего друга</p>
+              <ul className="text-sm text-gray-500 space-y-1 mb-6">
+                <li>• Хронология дружбы</li>
+                <li>• Веселые моменты</li>
+                <li>• Совместные фотографии</li>
+              </ul>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 flex items-center">
+                  <Clock className="w-4 h-4 mr-1" />
+                  12 мин
+                </span>
+                <span className="text-lg font-bold text-purple-600">2,490₽</span>
+              </div>
             </div>
-            <h4 className="text-xl font-semibold text-gray-800 mb-3">Книга дружбы</h4>
-            <p className="text-gray-600 mb-4">Для лучшего друга</p>
-            <ul className="text-sm text-gray-500 space-y-1 mb-6">
-              <li>• Хронология дружбы</li>
-              <li>• Веселые моменты</li>
-              <li>• Совместные фотографии</li>
-            </ul>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 flex items-center">
-                <Clock className="w-4 h-4 mr-1" />
-                12 мин
-              </span>
-              <span className="text-lg font-bold text-purple-600">$27.99</span>
-            </div>
-          </div>
+          </Link>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="bg-white py-16">
+      <section id="how-it-works" className="bg-white py-16">
         <div className="container mx-auto px-4">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
             Как это работает
@@ -172,9 +181,11 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">
-              Начать создание
-            </button>
+            <Link href="/create">
+              <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                Начать создание
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -196,9 +207,9 @@ export default function Home() {
             <div>
               <h5 className="font-semibold mb-4">Продукт</h5>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white">Как работает</a></li>
-                <li><a href="#" className="hover:text-white">Примеры</a></li>
-                <li><a href="#" className="hover:text-white">Цены</a></li>
+                <li><a href="#how-it-works" className="hover:text-white">Как работает</a></li>
+                <li><a href="#book-types" className="hover:text-white">Примеры</a></li>
+                <li><a href="#pricing" className="hover:text-white">Цены</a></li>
               </ul>
             </div>
             
