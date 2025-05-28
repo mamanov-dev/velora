@@ -87,7 +87,7 @@ export default function EnhancedBookViewer() {
     if (navigator.share) {
       navigator.share({
         title: book.title,
-        text: `Посмотрите мою персональную книгу "${book.title}" созданную с помощью ИИ!`,
+        text: `Посмотрите мою персональную книгу &quot;${book.title}&quot; созданную с помощью ИИ!`,
         url: window.location.href
       });
     } else {

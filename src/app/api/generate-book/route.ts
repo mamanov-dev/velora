@@ -5,6 +5,17 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+interface GeneratedBook {
+  title: string;
+  chapters: Array<{
+    number: number;
+    title: string;
+    content: string;
+  }>;
+  totalChapters: number;
+  estimatedReadTime: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { bookType, answers } = await request.json();
@@ -59,7 +70,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generatePrompt(bookType: string, answers: Record<string, any>): string {
+function generatePrompt(bookType: string, answers: Record<string, string>): string {
   switch (bookType) {
     case 'romantic':
       return `
@@ -124,7 +135,7 @@ function generatePrompt(bookType: string, answers: Record<string, any>): string 
   }
 }
 
-function structureBook(content: string, bookType: string): any {
+function structureBook(content: string, bookType: string): GeneratedBook {
   // Разбиваем книгу на главы
   const chapters = content.split(/Глава \d+|ГЛАВА \d+|\d+\./g).filter(chapter => chapter.trim().length > 50);
   

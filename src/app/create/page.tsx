@@ -16,7 +16,7 @@ interface BookType {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: React.ElementType;
   price: string;
   questions: Question[];
 }
