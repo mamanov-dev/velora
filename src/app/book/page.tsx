@@ -723,7 +723,7 @@ export default function EnhancedBookViewer() {
               {/* Эпиграф если есть */}
               {currentChapterData.epigraph && (
                 <blockquote className="text-gray-600 italic text-center max-w-md mx-auto">
-                  "{currentChapterData.epigraph}"
+                  &quot;{currentChapterData.epigraph}&quot;
                 </blockquote>
               )}
             </div>
