@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Download, Share2, Sparkles, BookOpen, Menu } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, Share2, Menu } from 'lucide-react';
 import Link from 'next/link';
 
 interface BookChapter {
